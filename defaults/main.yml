@@ -30,3 +30,12 @@ pihole_ptr: "HOSTNAMEFQDN" # https://docs.pi-hole.net/ftldns/configfile/#pihole_
 
 ## Pi-hole IPv6 configuration
 pihole_enable_ipv6_support: false
+
+## Pi-hole custom CNAME records
+# pihole_local_cname_records: |
+#   cname=node.homelab.local,webserver.homelab.local
+
+## Pi-hole custom DNS records
+# pihole_local_dns_records: |
+#   10.0.20.88 node.homelab.local
+#   10.0.20.96 nas.homelab.local

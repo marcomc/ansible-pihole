@@ -10,12 +10,12 @@ This role was adapted from [danylomikula/ansible-pihole-cluster](https://github.
 
 - Ansible 2.9 or higher
 - Supported operating systems:
-    - Debian
-    - Ubuntu
-    - Fedora
-    - CentOS
-    - RedHat
-    - ArchLinux
+      - Debian
+      - Ubuntu
+      - Fedora
+      - CentOS
+      - RedHat
+      - ArchLinux
 
 ## Role Variables
 
