@@ -2,16 +2,20 @@
 
 An Ansible role to install Pi-hole on GNU/Linux systems.
 
+## Credits
+
+This role was adapted from [danylomikula/ansible-pihole-cluster](https://github.com/danylomikula/ansible-pihole-cluster) and modified to be a standalone role with minimal changes.
+
 ## Requirements
 
 - Ansible 2.9 or higher
 - Supported operating systems:
-  - Debian
-  - Ubuntu
-  - Fedora
-  - CentOS
-  - RedHat
-  - ArchLinux
+    - Debian
+    - Ubuntu
+    - Fedora
+    - CentOS
+    - RedHat
+    - ArchLinux
 
 ## Role Variables
 
@@ -61,9 +65,9 @@ To include the `ansible-pihole` role in your project, add the following to your 
 
 ```yaml
 - src: https://github.com/mmassari/ansible-pihole.git
-    scm: git
-    version: master
-    name: pihole
+        scm: git
+        version: master
+        name: pihole
 ```
 
 Then, run the following command:
@@ -76,32 +80,40 @@ ansible-galaxy install -r requirements.yml
 
 ```yaml
 - hosts: all
-  roles:
-    - role: pihole
-      vars:
-        pihole_version: "5.18.3"
-        pihole_install_web_interface: "true"
-        pihole_install_web_server: "true"
-        pihole_lighthttpd_enabled: "true"
-        pihole_privacy_level: "0"
-        pihole_interface: "eth0"
-        pihole_query_logging: "true"
-        pihole_dnsmasq_listening: "all"
-        pihole_dns_1: "1.1.1.1"
-        pihole_dns_2: "1.0.0.1"
-        pihole_fqdn_required: "true"
-        pihole_bogus_priv: "true"
-        pihole_dns_cache_size: "10000"
-        pihole_dnssec_enabled: "false"
-        pihole_rev_server: false
-        pihole_rev_server_domain: "pihole.local"
-        pihole_rev_server_target: "192.168.0.1"
-        pihole_rev_server_cidr: "192.168.0.0/24"
-        pihole_webpassword: "changeme"
-        pihole_rate_limit: "1000/60"
-        pihole_reply_when_busy: "DROP"
-        pihole_block_icloud_pr: "true"
-        pihole_socket_listening: "all"
-        pihole_ptr: "HOSTNAMEFQDN"
-        pihole_enable_ipv6_support: false
+    roles:
+        - role: pihole
+            vars:
+                pihole_version: "5.18.3"
+                pihole_install_web_interface: "true"
+                pihole_install_web_server: "true"
+                pihole_lighthttpd_enabled: "true"
+                pihole_privacy_level: "0"
+                pihole_interface: "eth0"
+                pihole_query_logging: "true"
+                pihole_dnsmasq_listening: "all"
+                pihole_dns_1: "1.1.1.1"
+                pihole_dns_2: "1.0.0.1"
+                pihole_fqdn_required: "true"
+                pihole_bogus_priv: "true"
+                pihole_dns_cache_size: "10000"
+                pihole_dnssec_enabled: "false"
+                pihole_rev_server: false
+                pihole_rev_server_domain: "pihole.local"
+                pihole_rev_server_target: "192.168.0.1"
+                pihole_rev_server_cidr: "192.168.0.0/24"
+                pihole_webpassword: "changeme"
+                pihole_rate_limit: "1000/60"
+                pihole_reply_when_busy: "DROP"
+                pihole_block_icloud_pr: "true"
+                pihole_socket_listening: "all"
+                pihole_ptr: "HOSTNAMEFQDN"
+                pihole_enable_ipv6_support: false
 ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Copyright
+
+© 2023 Marco Massari Calderone <marco@marcomc.com>. All rights reserved.
