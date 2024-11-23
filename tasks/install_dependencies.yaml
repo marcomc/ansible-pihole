@@ -1,0 +1,33 @@
+- name: Install OS dependencies
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - bind-utils
+
+- name: Install installer dependencies
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - git
+    - iproute
+    - dialog
+    - ca-certificates
+
+- name: Install Pi-hole dependencies
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - cronie
+    - curl
+    - psmisc
+    - sudo
+    - unzip
+    - libidn2
+    - libcap
+    - libcap
+    - nmap-ncat
+    - procps-ng
+    - jq

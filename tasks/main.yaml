@@ -1,0 +1,14 @@
+- name: Import setup facts tasks
+  ansible.builtin.import_tasks: setup_facts.yaml
+- name: Import setup directories tasks
+  ansible.builtin.import_tasks: setup_directories.yaml
+- name: Import setup templates tasks
+  ansible.builtin.import_tasks: setup_templates.yaml
+- name: Import check versions tasks
+  ansible.builtin.import_tasks: check_versions.yaml
+- name: Import install dependencies tasks
+  ansible.builtin.import_tasks: install_dependencies.yaml
+- name: Import install pihole tasks
+  ansible.builtin.import_tasks: install_pihole.yaml
+- name: Import post install tasks
+  ansible.builtin.import_tasks: post_install.yaml

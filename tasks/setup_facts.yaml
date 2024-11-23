@@ -1,0 +1,8 @@
+- name: Set facts for IPv4 addresses
+  ansible.builtin.set_fact:
+    host_local_ipv4: "{{ ansible_default_ipv4.address }}"
+
+- name: Set facts for IPv6 addresses
+  ansible.builtin.set_fact:
+    host_local_ipv6: "{{ ansible_default_ipv6.address }}"
+  when: pihole_enable_ipv6_support

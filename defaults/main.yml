@@ -1,0 +1,32 @@
+---
+## Pi-hole initial configuration setupVars.conf
+pihole_version: 5.18.3 # https://github.com/pi-hole/pi-hole/releases
+pihole_install_web_interface: "true"
+pihole_install_web_server: "true"
+pihole_lighthttpd_enabled: "true"
+pihole_privacy_level: "0" # https://docs.pi-hole.net/ftldns/privacylevels/
+pihole_interface: "eth0"
+pihole_query_logging: "true"
+pihole_dnsmasq_listening: "all" # local/all
+pihole_dns_1: "1.1.1.1"
+pihole_dns_2: "1.0.0.1"
+pihole_fqdn_required: "true"
+pihole_bogus_priv: "true"
+pihole_dns_cache_size: "10000" # https://docs.pi-hole.net/ftldns/dns-cache/
+pihole_dnssec_enabled: "false" # Enable DNSSEC support
+pihole_rev_server: false # Enable DNS conditional forwarding for device name resolution
+pihole_rev_server_domain: "pihole.local" # If conditional forwarding is enabled, set the domain of the local network router
+pihole_rev_server_target: "192.168.0.1" # If conditional forwarding is enabled, set the IP of the local network router
+pihole_rev_server_cidr: "192.168.0.0/24" # If conditional forwarding is enabled, set the reverse DNS zone (e.g. 192.168.0.0/24)
+
+## Pi-hole general configuration pihole-FTL.conf
+## https://docs.pi-hole.net/ftldns/configfile/
+pihole_webpassword: "changeme" # https://docs.pi-hole.net/core/pihole-command/?h=password#password
+pihole_rate_limit: "1000/60" # https://docs.pi-hole.net/ftldns/configfile/#rate_limit
+pihole_reply_when_busy: "DROP" # https://docs.pi-hole.net/ftldns/configfile/#reply_when_busy
+pihole_block_icloud_pr: "true" # https://docs.pi-hole.net/ftldns/configfile/#icloud_private_relay
+pihole_socket_listening: "all" # https://docs.pi-hole.net/ftldns/configfile/#socket_listening
+pihole_ptr: "HOSTNAMEFQDN" # https://docs.pi-hole.net/ftldns/configfile/#pihole_ptr
+
+## Pi-hole IPv6 configuration
+pihole_enable_ipv6_support: false

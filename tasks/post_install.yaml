@@ -1,0 +1,15 @@
+- name: Check if Pi-hole FTL service is running
+  ansible.builtin.systemd:
+    name: pihole-FTL
+  register: pihole_ftl_status
+  retries: 10
+  delay: 5
+  until: pihole_ftl_status.status.ActiveState == 'active'
+
+- name: Set Pi-hole FTL WEB password
+  ansible.builtin.command: pihole -a -p {{ pihole_webpassword }}
+  changed_when: false
+
+- name: Restart Pi-hole DNS
+  ansible.builtin.command: pihole restartdns
+  changed_when: false

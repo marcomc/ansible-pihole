@@ -1,0 +1,11 @@
+- name: Ensures /etc/pihole dir exists
+  ansible.builtin.file:
+    path: /etc/pihole
+    state: directory
+    mode: "0775"
+
+- name: Ensures /etc/dnsmasq.d dir exists
+  ansible.builtin.file:
+    path: /etc/dnsmasq.d
+    state: directory
+    mode: "0755"
