@@ -4,7 +4,7 @@ An Ansible role to install Pi-hole on GNU/Linux systems.
 
 ## Credits
 
-This role was adapted from [danylomikula/ansible-pihole-cluster](https://github.com/danylomikula/ansible-pihole-cluster) and modified to be a standalone role with minimal changes.
+This `pihol` role was adapted from [danylomikula/ansible-pihole-cluster](https://github.com/danylomikula/ansible-pihole-cluster) and modified to integrate also the `pihole_updatelists` role and be a standalone role with minimal changes.
 
 ## Requirements
 
@@ -52,6 +52,15 @@ This role was adapted from [danylomikula/ansible-pihole-cluster](https://github.
 ### Pi-hole IPv6 configuration
 
 - `pihole_enable_ipv6_support`: Enable IPv6 support (default: `false`)
+
+### Pi-hole Update Lists configuration
+
+- `pihole_updatelists_enable`: Enable pihole-updatelists (default: `true`)
+- `pihole_updatelists_adlists_url`: URL for adlists (default: `"https://v.firebog.net/hosts/lists.php?type=nocross"`)
+- `pihole_updatelists_whitelist_url`: URL for whitelist (default: `"https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt"`)
+- `pihole_updatelists_regex_blacklist_url`: URL for regex blacklist (default: `"https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list"`)
+- `pihole_updatelists_regex_whitelist_url`: URL for regex whitelist (default: `"https://raw.githubusercontent.com/mmotti/pihole-regex/master/whitelist.list"`)
+- `pihole_updatelists_update_gravity`: Update gravity after lists update (default: `false`)
 
 ## Dependencies
 
@@ -108,6 +117,12 @@ ansible-galaxy install -r requirements.yml
                 pihole_socket_listening: "all"
                 pihole_ptr: "HOSTNAMEFQDN"
                 pihole_enable_ipv6_support: false
+                pihole_updatelists_enable: true
+                pihole_updatelists_adlists_url: "https://v.firebog.net/hosts/lists.php?type=nocross"
+                pihole_updatelists_whitelist_url: "https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt"
+                pihole_updatelists_regex_blacklist_url: "https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list"
+                pihole_updatelists_regex_whitelist_url: "https://raw.githubusercontent.com/mmotti/pihole-regex/master/whitelist.list"
+                pihole_updatelists_update_gravity: false
 ```
 
 ## License

@@ -1,0 +1,33 @@
+- name: Install pihole-updatelists dependencies
+  when: pihole_updatelists_enable | bool
+  ansible.builtin.package:
+    name:
+      - php-cli
+      - php-sqlite3
+      - php-intl
+      - php-curl
+    state: present
+
+- name: Create pihole-updatelists.conf
+  ansible.builtin.template:
+    dest: /etc/pihole-updatelists.conf
+    src: pihole-updatelists.conf.j2
+    mode: "0755"
+
+- name: Download pihole-updatelists install script
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/jacklul/pihole-updatelists/master/install.sh
+    dest: /tmp/install_pihole_updatelists.sh
+    mode: '0755'
+  changed_when: false
+
+- name: Install pihole-updatelists
+  ansible.builtin.command:
+    cmd: bash /tmp/install_pihole_updatelists.sh
+    executable: /bin/bash
+  register: install_status
+  changed_when: false
+
+- name: Display pihole-updatelists installation process
+  ansible.builtin.debug:
+    var: install_status.stdout_lines

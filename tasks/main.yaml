@@ -12,3 +12,9 @@
   ansible.builtin.import_tasks: install_pihole.yaml
 - name: Import post install tasks
   ansible.builtin.import_tasks: post_install.yaml
+- name: Import install updatelists tasks
+  ansible.builtin.import_tasks: install_updatelists.yml
+- name: Import update lists tasks
+  ansible.builtin.import_tasks: update_lists.yml
+- name: Import update gravity tasks
+  ansible.builtin.import_tasks: update_gravity.yml

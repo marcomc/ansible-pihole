@@ -1,0 +1,8 @@
+- name: Update Pi-hole Gravity
+  ansible.builtin.command: pihole updateGravity
+  register: gravity_process_status
+  changed_when: false
+
+- name: Display Pi-hole Gravity update process
+  ansible.builtin.debug:
+    var: gravity_process_status.stdout_lines

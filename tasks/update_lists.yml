@@ -1,0 +1,28 @@
+- name: Check if /usr/local/sbin/pihole-updatelists exists
+  ansible.builtin.stat:
+    path: /usr/local/sbin/pihole-updatelists
+  register: pihole_updatelists_stat
+
+- name: Run pihole-updatelists
+  when: pihole_updatelists_stat.stat.exists
+  block:
+    - name: Remove the specified lines
+      ansible.builtin.replace:
+        path: /usr/local/sbin/pihole-updatelists
+        regexp: "(^ {8}print 'root privileges required' \\. PHP_EOL;\\n^ {8}exit\\(1\\);)"
+        replace: "        print ' ';"
+      when: ansible_os_family == 'RedHat'
+
+    - name: Update lists
+      ansible.builtin.command: /usr/local/sbin/pihole-updatelists
+      register: updatelists_process_status
+      changed_when: false
+
+    - name: Display update lists process
+      ansible.builtin.debug:
+        var: updatelists_process_status.stdout_lines
+
+- name: Fail if pihole-updatelists does not exist
+  ansible.builtin.fail:
+    msg: "/usr/local/sbin/pihole-updatelists does not exist"
+  when: not pihole_updatelists_stat.stat.exists

@@ -31,6 +31,16 @@ pihole_ptr: "HOSTNAMEFQDN" # https://docs.pi-hole.net/ftldns/configfile/#pihole_
 ## Pi-hole IPv6 configuration
 pihole_enable_ipv6_support: false
 
+## pihole-updatelists Settings
+## https://github.com/jacklul/pihole-updatelists
+## https://firebog.net/
+pihole_updatelists_enable: true
+pihole_updatelists_adlists_url: "https://v.firebog.net/hosts/lists.php?type=nocross" # https://firebog.net/
+pihole_updatelists_whitelist_url: "https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt" # https://github.com/anudeepND/whitelist
+pihole_updatelists_regex_blacklist_url: "https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list" # https://github.com/mmotti/pihole-regex
+pihole_updatelists_regex_whitelist_url: "https://raw.githubusercontent.com/mmotti/pihole-regex/master/whitelist.list" # https://github.com/mmotti/pihole-regex
+pihole_updatelists_update_gravity: false
+
 ## Pi-hole custom CNAME records
 # pihole_local_cname_records: |
 #   cname=node.homelab.local,webserver.homelab.local

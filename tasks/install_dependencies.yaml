@@ -1,3 +1,4 @@
+---
 - name: Install OS dependencies
   ansible.builtin.package:
     name: "{{ item }}"
@@ -31,3 +32,13 @@
     - nmap-ncat
     - procps-ng
     - jq
+
+- name: Install updatelists dependencies
+  when: pihole_updatelists_enable | bool
+  ansible.builtin.package:
+    name:
+      - php-cli
+      - php-sqlite3
+      - php-intl
+      - php-curl
+    state: present
