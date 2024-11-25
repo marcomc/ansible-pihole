@@ -1,11 +1,4 @@
 ---
-- name: Install OS dependencies
-  ansible.builtin.package:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - bind-utils
-
 - name: Install installer dependencies
   ansible.builtin.package:
     name: "{{ item }}"
