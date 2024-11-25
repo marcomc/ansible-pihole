@@ -49,3 +49,64 @@ pihole_updatelists_update_gravity: false
 # pihole_local_dns_records: |
 #   10.0.20.88 node.homelab.local
 #   10.0.20.96 nas.homelab.local
+
+
+pihole_os_checks_dependencies_deb:
+  - grep
+  - dnsutils
+
+pihole_os_checks_dependencies_rpm:
+  - grep
+  - bind-utils
+
+pihole_installer_dependencies_deb:
+  - git
+  - iproute2
+  - dialog
+  - ca-certificates
+
+pihole_installer_dependencies_rpm:
+  - git
+  - dialog
+  - iproute
+  - newt
+  - procps-ng
+  - chkconfig
+  - ca-certificates
+
+pihole_dependencies_deb:
+  - cron
+  - curl
+  - iputils-ping
+  - psmisc
+  - sudo
+  - unzip
+  - idn2
+  - libcap2-bin
+  - dns-root-data
+  - libcap2
+  - netcat-openbsd
+  - procps
+  - jq
+
+pihole_dependencies_rpm:
+  - cronie
+  - curl
+  - findutils
+  - sudo
+  - unzip
+  - libidn2
+  - psmisc
+  - libcap
+  - nmap-ncat
+  - jq
+
+pihole_os_checks_dependencies: "{{ pihole_os_checks_dependencies_deb if pihole_os_family == 'Debian' else pihole_os_checks_dependencies_rpm }}"
+pihole_installer_dependencies: "{{ pihole_installer_dependencies_deb if ansible_os_family == 'Debian' else pihole_installer_dependencies_rpm }}"
+pihole_dependencies: "{{ pihole_dependencies_deb if pihole_os_family == 'Debian' else pihole_dependencies_rpm }}"
+
+pihole_updatelists_dependencies:
+  - php-cli
+  - php-sqlite3
+  - php-intl
+  - php-curl

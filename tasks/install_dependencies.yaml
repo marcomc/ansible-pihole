@@ -1,35 +1,24 @@
 ---
+- name: Install operating system checks dependencies
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ pihole_os_checks_dependencies }}"
+
 - name: Install installer dependencies
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
-  loop:
-    - git
-    - dialog
-    - ca-certificates
+  loop: "{{ pihole_installer_dependencies }}"
 
 - name: Install Pi-hole dependencies
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
-  loop:
-    - curl
-    - psmisc
-    - sudo
-    - unzip
-    - libidn2
-    - libcap
-    - libcap
-    - nmap-ncat
-    - procps-ng
-    - jq
+  loop: "{{ pihole_dependencies }}"
 
 - name: Install updatelists dependencies
   when: pihole_updatelists_enable | bool
   ansible.builtin.package:
-    name:
-      - php-cli
-      - php-sqlite3
-      - php-intl
-      - php-curl
+    name: "{{ pihole_updatelists_dependencies }}"
     state: present
