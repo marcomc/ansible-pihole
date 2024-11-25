@@ -24,7 +24,6 @@
 - name: Install pihole-updatelists
   ansible.builtin.command:
     cmd: bash /tmp/install_pihole_updatelists.sh
-    executable: /bin/bash
   register: install_status
   changed_when: false
 
