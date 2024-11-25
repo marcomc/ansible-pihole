@@ -5,7 +5,6 @@
     state: present
   loop:
     - git
-    - iproute
     - dialog
     - ca-certificates
 
@@ -14,7 +13,6 @@
     name: "{{ item }}"
     state: present
   loop:
-    - cronie
     - curl
     - psmisc
     - sudo
