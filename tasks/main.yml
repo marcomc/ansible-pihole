@@ -1,28 +1,28 @@
 - name: Import setup facts tasks
-  ansible.builtin.import_tasks: setup_facts.yaml
+  ansible.builtin.import_tasks: setup_facts.yml
 
 - name: Import setup directories tasks
-  ansible.builtin.import_tasks: setup_directories.yaml
+  ansible.builtin.import_tasks: setup_directories.yml
   tags: setup_directories
 
 - name: Import setup templates tasks
-  ansible.builtin.import_tasks: setup_templates.yaml
+  ansible.builtin.import_tasks: setup_templates.yml
   tags: setup_templates
 
 - name: Import check versions tasks
-  ansible.builtin.import_tasks: check_versions.yaml
+  ansible.builtin.import_tasks: check_versions.yml
   tags: check_versions
 
 - name: Import install dependencies tasks
-  ansible.builtin.import_tasks: install_dependencies.yaml
+  ansible.builtin.import_tasks: install_dependencies.yml
   tags: install_dependencies
 
 - name: Import install pihole tasks
-  ansible.builtin.import_tasks: install_pihole.yaml
+  ansible.builtin.import_tasks: install_pihole.yml
   tags: install_pihole
 
 - name: Import post install tasks
-  ansible.builtin.import_tasks: post_install.yaml
+  ansible.builtin.import_tasks: post_install.yml
   tags: post_install
 
 - name: Import install updatelists tasks
