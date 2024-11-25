@@ -101,10 +101,6 @@ pihole_dependencies_rpm:
   - nmap-ncat
   - jq
 
-pihole_os_checks_dependencies: "{{ pihole_os_checks_dependencies_deb if pihole_os_family == 'Debian' else pihole_os_checks_dependencies_rpm }}"
-pihole_installer_dependencies: "{{ pihole_installer_dependencies_deb if ansible_os_family == 'Debian' else pihole_installer_dependencies_rpm }}"
-pihole_dependencies: "{{ pihole_dependencies_deb if pihole_os_family == 'Debian' else pihole_dependencies_rpm }}"
-
 pihole_updatelists_dependencies:
   - php-cli
   - php-sqlite3

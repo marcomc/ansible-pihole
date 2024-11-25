@@ -1,21 +1,22 @@
 ---
+
 - name: Install operating system checks dependencies
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
-  loop: "{{ pihole_os_checks_dependencies }}"
+  loop: "{{ pihole_os_checks_dependencies_deb if ansible_os_family == 'Debian' else pihole_os_checks_dependencies_rpm }}"
 
 - name: Install installer dependencies
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
-  loop: "{{ pihole_installer_dependencies }}"
+  loop: "{{ pihole_installer_dependencies_deb if ansible_os_family == 'Debian' else pihole_os_checks_dependencies_rpm }}"
 
 - name: Install Pi-hole dependencies
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
-  loop: "{{ pihole_dependencies }}"
+  loop: "{{ pihole_dependencies_deb if ansible_os_family == 'Debian' else pihole_os_checks_dependencies_rpm }}"
 
 - name: Install updatelists dependencies
   when: pihole_updatelists_enable | bool
