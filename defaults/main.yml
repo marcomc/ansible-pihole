@@ -43,12 +43,12 @@ pihole_updatelists_update_gravity: false
 
 ## Pi-hole custom CNAME records
 # pihole_local_cname_records: |
-#   cname=node.homelab.local,webserver.homelab.local
+#   cname=alias1.example.com,target1.example.com
 
 ## Pi-hole custom DNS records
 # pihole_local_dns_records: |
-#   10.0.20.88 node.homelab.local
-#   10.0.20.96 nas.homelab.local
+#   10.0.20.88 target1.example.com
+#   10.0.20.96 target2.example.com
 
 
 pihole_os_checks_dependencies_deb:
